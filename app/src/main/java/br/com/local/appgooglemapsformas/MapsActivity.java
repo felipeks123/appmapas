@@ -37,7 +37,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        // Add a marker in Sydney and move the camera
+
+
+
         final LatLng etecia = new LatLng(-23.702723, -46.6914657);
 
         /*
@@ -45,18 +47,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         CircleOptions circleOptions = new CircleOptions();
 
         circleOptions.center(etecia);
-        circleOptions.fillColor(Color.argb(100,204, 0, 153));
+        circleOptions.fillColor(Color.argb(50,0,100,0));
         circleOptions.strokeWidth(10);
         circleOptions.strokeColor(Color.GREEN);
         //Medida em metros
-        circleOptions.radius(500.00);
-         mMap.addCircle(circleOptions);
-        */
+        circleOptions.radius(1000.00);
+        //Aplicando o circulo no mapa
+         mMap.addCircle(circleOptions);*/
+
 
 
         /*Criando Poligonos
 
         PolygonOptions polygonOptions = new PolygonOptions();
+
         polygonOptions.add(new LatLng(-23.701221, -46.685091));
         polygonOptions.add(new LatLng(-23.706370, -46.688433));
         polygonOptions.add(new LatLng(-23.700058, -46.691930));
@@ -65,6 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         polygonOptions.fillColor(Color.argb(100, 204, 0, 153));
         polygonOptions.strokeWidth(10);
 
+        //Aplicando o poligono no mapa
         mMap.addPolygon(polygonOptions);*/
 
 
@@ -76,10 +81,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 latitude = latLng.latitude;
                 longitude = latLng.longitude;
 
-                /*Toast.makeText(getApplicationContext(),
+              Toast.makeText(getApplicationContext(),
                         "Latitude: " + latitude + "\n" +
                                 "Longitude: " + longitude,
-                        Toast.LENGTH_SHORT).show();*/
+                        Toast.LENGTH_SHORT).show();
 
                 /*Desenhando linhas com base em um ponto
 
@@ -87,7 +92,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 polygonOptions.add(etecia);
                 polygonOptions.add(latLng);
                 polygonOptions.strokeColor(Color.BLUE);
-                polygonOptions.strokeWidth(18);
+                polygonOptions.strokeWidth(10);
 
                 mMap.addPolygon(polygonOptions);*/
 
@@ -102,6 +107,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 );
             }
         });
+        //Está fora do onclick - posição inicial quando o app é carregado
         mMap.addMarker(
                 new MarkerOptions()
                         .position(etecia)
@@ -111,6 +117,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         )
 
         );
+        //o zoom da camera é de 2 até 21
         mMap.moveCamera(
                 CameraUpdateFactory.newLatLngZoom(etecia, 13));
     }
