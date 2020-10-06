@@ -13,6 +13,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 
@@ -40,37 +41,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-        final LatLng etecia = new LatLng(-23.702723, -46.6914657);
-
-        /*
-        Criando Circulos
-        CircleOptions circleOptions = new CircleOptions();
-
-        circleOptions.center(etecia);
-        circleOptions.fillColor(Color.argb(50,0,100,0));
-        circleOptions.strokeWidth(10);
-        circleOptions.strokeColor(Color.GREEN);
-        //Medida em metros
-        circleOptions.radius(1000.00);
-        //Aplicando o circulo no mapa
-         mMap.addCircle(circleOptions);*/
-
-
-
-        /*Criando Poligonos
-
-        PolygonOptions polygonOptions = new PolygonOptions();
-
-        polygonOptions.add(new LatLng(-23.701221, -46.685091));
-        polygonOptions.add(new LatLng(-23.706370, -46.688433));
-        polygonOptions.add(new LatLng(-23.700058, -46.691930));
-        polygonOptions.add(new LatLng(-23.702861, -46.701149));
-        polygonOptions.strokeColor(Color.BLUE);
-        polygonOptions.fillColor(Color.argb(100, 204, 0, 153));
-        polygonOptions.strokeWidth(10);
-
-        //Aplicando o poligono no mapa
-        mMap.addPolygon(polygonOptions);*/
+        final LatLng casa = new LatLng(-23.6755248, -46.7517092);
 
 
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
@@ -86,15 +57,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 "Longitude: " + longitude,
                         Toast.LENGTH_SHORT).show();
 
-                /*Desenhando linhas com base em um ponto
 
-                PolygonOptions polygonOptions = new PolygonOptions();
-                polygonOptions.add(etecia);
-                polygonOptions.add(latLng);
-                polygonOptions.strokeColor(Color.BLUE);
-                polygonOptions.strokeWidth(10);
-
-                mMap.addPolygon(polygonOptions);*/
 
                 mMap.addMarker(
                         new MarkerOptions()
@@ -107,18 +70,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 );
             }
         });
-        //Está fora do onclick - posição inicial quando o app é carregado
-        mMap.addMarker(
+        final Marker minha_casa = mMap.addMarker(
                 new MarkerOptions()
-                        .position(etecia)
-                        .title("Etec Irmã Agostina")
+                        .position(casa)
+                        .title("minha casa")
                         .icon(
-                                BitmapDescriptorFactory.fromResource(R.drawable.escola)
+                                BitmapDescriptorFactory.fromResource(R.drawable.casa)
                         )
 
         );
         //o zoom da camera é de 2 até 21
         mMap.moveCamera(
-                CameraUpdateFactory.newLatLngZoom(etecia, 13));
+                CameraUpdateFactory.newLatLngZoom(casa, 13));
     }
 }
